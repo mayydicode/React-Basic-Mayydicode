@@ -11,29 +11,52 @@
 import React from "react";
 class MyComponent extends React.Component {
   state = {
-    name: "Ngan",
-    adress: "PBC",
+    firtName: "",
+    lastName: "",
   };
-
-  handleOnChangeName = (event) => {
+  // DOM Events
+  handleOnChangefistName = (event) => {
     this.setState({
-      name: event.target.value,
+      fistName: event.target.value,
     });
   };
 
+  handleOnChangelastName = (event) => {
+    this.setState({
+      lastName: event.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    //Ngăn chặn hành động mặc định của form khi submit, ngăn trình duyệt tự động tải lại trang khi form được gửi đi
+    event.preventDefault();
+    alert("Submit done");
+  };
+
   render() {
-    // let newName = "milo";
+    console.log(">>> This data", this.state);
     return (
       <>
-        <div className="first">
+        <form>
+          <label htmlFor="fname">First name:</label>
+          <br />
           <input
-            value={this.state.name}
             type="text"
-            onChange={(event) => this.handleOnChangeName(event)}
+            value={this.state.fistName}
+            onChange={(event) => this.handleOnChangefistName(event)}
           />
           <br />
-          My name is : {this.state.name}
-        </div>
+          <label htmlFor="lname">Last name:</label>
+          <br />
+          <input
+            type="text"
+            value={this.state.lastName}
+            onChange={(event) => this.handleOnChangelastName(event)}
+          />
+          <br />
+          <br />
+          <input type="submit" onClick={(event) => this.handleSubmit(event)} />
+        </form>
       </>
     );
   }
