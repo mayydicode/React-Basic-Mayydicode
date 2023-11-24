@@ -9,10 +9,19 @@
 // export default MyPomponent;
 
 import React from "react";
+//>> Nesting Components
+import ChildComponent from "./ChildComponent";
+
+// Creat Components
 class MyComponent extends React.Component {
   state = {
     firtName: "",
     lastName: "",
+    arrJobs: [
+      { id: "job1", title: "dev", salary: "500" },
+      { id: "job2", title: "tester", salary: "400" },
+      { id: "job3", title: "manegers", salary: "1000" },
+    ],
   };
   // DOM Events
   handleOnChangefistName = (event) => {
@@ -34,7 +43,7 @@ class MyComponent extends React.Component {
   };
 
   render() {
-    console.log(">>> This data", this.state);
+    // console.log(">>> This data", this.state);
     return (
       <>
         <form>
@@ -57,6 +66,11 @@ class MyComponent extends React.Component {
           <br />
           <input type="submit" onClick={(event) => this.handleSubmit(event)} />
         </form>
+        <ChildComponent
+          name={this.state.firtName}
+          age={"25"}
+          arrJobs={this.state.arrJobs}
+        />
       </>
     );
   }
