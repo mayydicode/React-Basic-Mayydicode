@@ -1,3 +1,7 @@
+// >> Đây chỉ là VD k quan tâm file Js này >>>>
+
+//---------------------//
+
 // import React from "react";
 
 // class MyPomponent extends React.Component {
