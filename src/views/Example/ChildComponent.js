@@ -43,7 +43,7 @@ class ChildComponent extends React.Component {
 
   render() {
     //Truyen nhieu data voi Props
-    // console.log(">>> This data", this.props);
+
     // let name = this.props.name;
     // let age = this.props.age;
 
@@ -52,9 +52,10 @@ class ChildComponent extends React.Component {
 
     let { showJobs } = this.state;
 
-    // SD dk vs react
+    // SD dk vs reac (câu dưới là cách viết gọn cua if-else)//
     let check = showJobs === true ? "showJobs = true" : "showJobs = false";
-    console.log("check conmditional : ", check);
+    // console.log("check conmditional : ", check);
+
     return (
       <>
         {showJobs === false ? (
