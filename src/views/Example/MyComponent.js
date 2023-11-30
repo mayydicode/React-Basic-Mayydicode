@@ -14,8 +14,13 @@ class MyComponent extends React.Component {
   };
   addNewJob = (job) => {
     console.log("check Job:", job);
+    //Kiêu viet khac cua dong 21//
+
+    // let currenJobs = this.state.arrJobs;
+    // currenJobs.push(job);
     this.setState({
       arrJobs: [...this.state.arrJobs, job],
+      // arrJobs: currenJobs,
     });
   };
 

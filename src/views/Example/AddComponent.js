@@ -40,13 +40,12 @@ class AddComponent extends React.Component {
       salary: this.state.salary,
     });
 
+    alert("Submit done");
     // Reset input//
     this.setState({
       title: "",
       salary: "",
     });
-
-    alert("Submit done");
   };
 
   render() {
