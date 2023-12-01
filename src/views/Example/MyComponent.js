@@ -14,7 +14,7 @@ class MyComponent extends React.Component {
   };
   addNewJob = (job) => {
     console.log("check Job:", job);
-    //Kiêu viet khac cua dong 21//
+    //Kiêu viet khac cua dong duoi//
 
     // let currenJobs = this.state.arrJobs;
     // currenJobs.push(job);
@@ -24,13 +24,24 @@ class MyComponent extends React.Component {
     });
   };
 
+  deleteAjob = (job) => {
+    let currenJobs = this.state.arrJobs;
+    currenJobs = currenJobs.filter((item) => item.id !== job.id);
+    this.setState({
+      arrJobs: currenJobs,
+    });
+  };
+
   render() {
     // console.log(">>> This data", this.state);
     return (
       <>
         <AddComponent addNewJob={this.addNewJob} />
 
-        <ChildComponent arrJobs={this.state.arrJobs} />
+        <ChildComponent
+          arrJobs={this.state.arrJobs}
+          deleteAjob={this.deleteAjob}
+        />
       </>
     );
   }
