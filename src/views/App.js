@@ -1,15 +1,17 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import MyComponent from "./Example/MyComponent.js";
+// import MyComponent from "./Example/MyComponent.js";
+import ListTodo from "./Example/Todos/ListTodo.js";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello world with React-Basic</p>
+        <p>Simple TODO Apps with React-Basic</p>
 
-        <MyComponent />
+        {/* <MyComponent /> */}
+        <ListTodo />
       </header>
     </div>
   );

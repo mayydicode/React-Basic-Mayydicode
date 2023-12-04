@@ -32,8 +32,22 @@ class MyComponent extends React.Component {
     });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(
+      "run disupdate:",
+      "prev state:",
+      prevState,
+      "current state:",
+      this.state
+    );
+  }
+
+  componentDidMount() {
+    console.log("run component did mount:");
+  }
+
   render() {
-    // console.log(">>> This data", this.state);
+    console.log(">>> This data", this.state);
     return (
       <>
         <AddComponent addNewJob={this.addNewJob} />
