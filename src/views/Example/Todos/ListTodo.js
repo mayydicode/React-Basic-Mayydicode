@@ -1,5 +1,6 @@
 import React from "react";
 import "./ListTodo.scss";
+import AddTodo from "./AddTodo";
 
 class ListTodo extends React.Component {
   state = {
@@ -10,32 +11,43 @@ class ListTodo extends React.Component {
     ],
   };
 
+  addNewTodo = (todo) => {
+    // let currentListTodo = this.state.listTodo;
+    // currentListTodo.push(todo);
+
+    this.setState({
+      listTodos: [...this.state.listTodos, todo],
+      // currentListTodo.push(todo);
+      // listTodo:currentListTodo
+    });
+  };
+
   render() {
     let listTodos = this.state.listTodos;
     //Hoac  let{listTodos}=this.state;
 
     return (
-      <div className="list-todo-container">
-        <div className="add-todo">
-          <input type="text" placeholder="Nhập data" />
-          <button type="button">Add</button>
+      <>
+        <div className="list-todo-container">
+          <AddTodo addNewTodo={this.addNewTodo} />
+
+          <div className="list-todo-content">
+            {listTodos &&
+              listTodos.length > 0 &&
+              listTodos.map((item, index) => {
+                return (
+                  <div className="todo-child" key={item.id}>
+                    <span className="text-todo">
+                      {index + 1} - {item.title}
+                    </span>
+                    <button className="edit">Edit</button>
+                    <button className="delete">Delete</button>
+                  </div>
+                );
+              })}
+          </div>
         </div>
-        <div className="list-todo-content">
-          {listTodos &&
-            listTodos.length > 0 &&
-            listTodos.map((item, index) => {
-              return (
-                <div className="todo-child" key={item.id}>
-                  <span>
-                    {index + 1} - {item.title}
-                  </span>
-                  <button className="edit">Edit</button> <> </>
-                  <button className="delete">Delete</button>
-                </div>
-              );
-            })}
-        </div>
-      </div>
+      </>
     );
   }
 }

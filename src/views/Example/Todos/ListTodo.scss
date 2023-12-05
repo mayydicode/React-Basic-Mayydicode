@@ -4,6 +4,17 @@
     cursor: pointer;
   }
   .add-todo {
+    .input-add {
+      padding: 3px 4px;
+      border-radius: 4px;
+      border: none;
+    }
+
+    .add {
+      margin-left: 10px;
+      border-radius: 4px;
+    }
+
     padding: 10px;
     margin: 10px;
   }
