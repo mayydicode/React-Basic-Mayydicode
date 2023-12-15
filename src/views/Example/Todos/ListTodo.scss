@@ -5,7 +5,7 @@
   }
   .add-todo {
     .input-add {
-      padding: 3px 4px;
+      padding: 6px 8px;
       border-radius: 4px;
       border: none;
     }
@@ -13,6 +13,11 @@
     .add {
       margin-left: 10px;
       border-radius: 4px;
+      padding: 6px 8px;
+      transition: all 0.3s ease;
+    }
+    .add:hover {
+      background-color: #659999;
     }
 
     padding: 10px;
@@ -36,7 +41,13 @@
     margin: 0 5px;
     border-radius: 4px;
   }
+  .edit:hover {
+    background-color: #659999;
+  }
   .delete {
     border-radius: 4px;
+  }
+  .delete:hover {
+    background-color: #659999;
   }
 }

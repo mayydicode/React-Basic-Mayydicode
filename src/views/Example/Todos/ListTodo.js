@@ -1,6 +1,7 @@
 import React from "react";
 import "./ListTodo.scss";
 import AddTodo from "./AddTodo";
+import { toast } from "react-toastify";
 
 class ListTodo extends React.Component {
   state = {
@@ -20,6 +21,11 @@ class ListTodo extends React.Component {
       // currentListTodo.push(todo);
       // listTodo:currentListTodo
     });
+    toast.success("Done nha");
+  };
+
+  handleDeleteTodo = (todo) => {
+    console.log("hello", todo);
   };
 
   render() {
@@ -41,7 +47,12 @@ class ListTodo extends React.Component {
                       {index + 1} - {item.title}
                     </span>
                     <button className="edit">Edit</button>
-                    <button className="delete">Delete</button>
+                    <button
+                      className="delete"
+                      onClick={() => this.handleDeleteTodo(item)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 );
               })}
