@@ -10,6 +10,7 @@ class ListTodo extends React.Component {
       { id: "todo2", title: "Watching FB" },
       { id: "todo3", title: "Play game" },
     ],
+    editTodo: {},
   };
 
   addNewTodo = (todo) => {
@@ -21,16 +22,36 @@ class ListTodo extends React.Component {
       // currentListTodo.push(todo);
       // listTodo:currentListTodo
     });
-    toast.success("Done nha");
+    toast.success("Done");
   };
 
   handleDeleteTodo = (todo) => {
-    console.log("hello", todo);
+    let currentTodos = this.state.listTodos;
+    currentTodos = currentTodos.filter((item) => item.id !== todo.id);
+    this.setState({
+      listTodos: currentTodos,
+    });
+    toast.success("Delete success");
+  };
+
+  handleEditTodo = (todo) => {
+    this.setState({
+      editTodo: todo,
+    });
+  };
+  handleOnchangeEditTodo = (event) => {
+    let editTodoCopy = { ...this.state.editTodo };
+    editTodoCopy.title = event.target.value;
+    this.setState({
+      editTodo: editTodoCopy,
+    });
   };
 
   render() {
-    let listTodos = this.state.listTodos;
-    //Hoac  let{listTodos}=this.state;
+    // let listTodos = this.state.listTodos;
+    let { listTodos, editTodo } = this.state;
+    let isEmptyObj = Object.keys(editTodo).length === 0;
+    console.log("check isEmptyObj :", isEmptyObj);
 
     return (
       <>
@@ -43,10 +64,37 @@ class ListTodo extends React.Component {
               listTodos.map((item, index) => {
                 return (
                   <div className="todo-child" key={item.id}>
-                    <span className="text-todo">
-                      {index + 1} - {item.title}
-                    </span>
-                    <button className="edit">Edit</button>
+                    {isEmptyObj === true ? (
+                      <span className="text-todo">
+                        {index + 1} - {item.title}
+                      </span>
+                    ) : (
+                      <>
+                        {editTodo.id === item.id ? (
+                          <span>
+                            {index + 1} -
+                            <input
+                              value={editTodo.title}
+                              onChange={(event) =>
+                                this.handleOnchangeEditTodo(event)
+                              }
+                            />
+                          </span>
+                        ) : (
+                          <span>
+                            {index + 1} - {item.title}
+                          </span>
+                        )}
+                      </>
+                    )}
+                    <button
+                      className="edit"
+                      onClick={() => this.handleEditTodo(item)}
+                    >
+                      {isEmptyObj === false && editTodo.id === item.id
+                        ? "Save"
+                        : "Edit"}
+                    </button>
                     <button
                       className="delete"
                       onClick={() => this.handleDeleteTodo(item)}
