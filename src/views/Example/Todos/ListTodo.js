@@ -22,7 +22,7 @@ class ListTodo extends React.Component {
       // currentListTodo.push(todo);
       // listTodo:currentListTodo
     });
-    toast.success("Done");
+    toast.success("Add success");
   };
 
   handleDeleteTodo = (todo) => {
@@ -35,6 +35,23 @@ class ListTodo extends React.Component {
   };
 
   handleEditTodo = (todo) => {
+    let { editTodo, listTodos } = this.state;
+    let isEmptyObj = Object.keys(editTodo).length === 0;
+
+    //Truong hop nhan nut Save
+    if (isEmptyObj === false && editTodo.id == todo.id) {
+      let listTodosCopy = [...listTodos];
+      let objIndex = listTodosCopy.findIndex((item) => item.id === todo.id);
+
+      listTodosCopy[objIndex].title = editTodo.title;
+      this.setState({
+        listTodos: listTodosCopy,
+        editTodo: {},
+      });
+      toast.success("Updata success");
+      return;
+    }
+    // Truong hop nhan nut Edit
     this.setState({
       editTodo: todo,
     });

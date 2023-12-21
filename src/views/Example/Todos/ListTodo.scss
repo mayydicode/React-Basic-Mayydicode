@@ -1,3 +1,9 @@
+// body {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
 .list-todo-container {
   button {
     border: none;
@@ -25,7 +31,7 @@
   }
 
   .list-todo-content {
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
   }
 
@@ -36,6 +42,10 @@
     height: 40px;
     border-bottom: 1px solid grey;
     margin: 10px;
+  }
+
+  .text-todo {
+    margin-right: 20px;
   }
   .edit {
     margin: 0 5px;
@@ -51,27 +61,3 @@
     background-color: #659999;
   }
 }
-
-// return (
-//   <div className="todo-child" key={item.id}>
-//     {/* Kiểm tra nếu isEmptyObj là true */}
-//     {isEmptyObj === true ? (
-//       // Hiển thị title của item
-//       <span className="text-todo">
-//         {index + 1} - {item.title}
-//       </span>
-//     ) : (
-//       // Nếu không phải isEmptyObj, kiểm tra xem có đang trong trạng thái editTodo hay không
-//       <>
-//         {editTodo.id === item.id ? (
-//           // Nếu đúng, hiển thị input để chỉnh sửa
-//           <span>
-//             {index + 1} - <input value={editTodo.title} />
-//           </span>
-//         ) : (
-//           // Nếu không phải, hiển thị title của item
-//           <span>
-//             {index + 1} - {item.title}
-//           </span>
-//         )}
-//       </>
